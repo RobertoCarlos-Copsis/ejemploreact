@@ -1,0 +1,51 @@
+.camera-modal-overlay {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0,0,0,0.85); backdrop-filter: blur(5px);
+    display: flex; align-items: center; justify-content: center; z-index: 9999;
+    padding: 20px;
+}
+.camera-modal-content {
+    background: #111827; width: 100%; max-width: 500px;
+    border-radius: 20px; overflow: hidden; position: relative;
+    box-shadow: 0 25px 50px -12px rgba(0,0,0,0.5);
+}
+.camera-modal-header {
+    padding: 15px 20px; display: flex; justify-content: space-between;
+    align-items: center; background: #1f2937; color: white;
+}
+.camera-modal-header h3 { font-size: 1.125rem; font-weight: 600; margin: 0; }
+.close-btn { background: none; border: none; color: #9ca3af; cursor: pointer; transition: color 0.2s; }
+.close-btn:hover { color: white; }
+
+.camera-view-container {
+    position: relative; aspect-ratio: 3/4; background: black;
+    display: flex; align-items: center; justify-content: center;
+    overflow: hidden;
+}
+.video-stream { width: 100%; height: 100%; object-fit: cover; }
+
+.camera-overlay-guide {
+    position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+    display: flex; align-items: center; justify-content: center;
+    pointer-events: none;
+}
+.guide-box {
+    width: 80%; height: 60%; border: 2px dashed rgba(255,255,255,0.5);
+    border-radius: 12px; box-shadow: 0 0 0 1000px rgba(0,0,0,0.3);
+}
+
+.camera-error { padding: 40px; text-align: center; color: white; }
+.camera-error p { margin: 15px 0 20px; color: #9ca3af; }
+
+.camera-modal-footer { padding: 20px; text-align: center; background: #1f2937; }
+.camera-hint { color: #9ca3af; font-size: 0.875rem; margin-bottom: 20px; }
+
+.camera-actions { display: flex; justify-content: center; }
+.capture-btn {
+    width: 70px; height: 70px; border-radius: 50%; background: white;
+    border: 5px solid #374151; cursor: pointer; display: flex;
+    align-items: center; justify-content: center; transition: transform 0.1s;
+}
+.capture-btn:active { transform: scale(0.9); }
+.capture-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+.capture-inner { width: 50px; height: 50px; border-radius: 50%; border: 2px solid #111827; }
