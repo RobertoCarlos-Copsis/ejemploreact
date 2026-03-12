@@ -34,7 +34,16 @@
 }
 
 .kpi-card.green {
-    background: #10b981;
+    background: #f59e0b;
+}
+
+.commission-tag {
+    font-size: 0.75rem;
+    background: #fef3c7;
+    color: #92400e;
+    padding: 2px 8px;
+    border-radius: 99px;
+    font-weight: 700;
 }
 
 .kpi-icon {
@@ -165,6 +174,10 @@
 
 .dot.green {
     background: #059669;
+}
+
+.dot.orange {
+    background: #f59e0b;
 }
 
 .dot.gray {

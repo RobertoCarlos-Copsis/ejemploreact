@@ -62,7 +62,10 @@ const Step1Import = () => {
 
                 // Si es imagen, intentamos cargar datos realistas o mock base
                 extractedData = {
-                    clientData: { name: 'ANA GARCIA LUNA', address: 'AV. INSURGENTES SUR 123, CDMX' },
+                    client: {
+                        name: 'ANA GARCIA LUNA',
+                        address: 'AV. INSURGENTES SUR 123, CDMX'
+                    },
                     policyData: {
                         policyNumber: 'HIR-' + Math.floor(Math.random() * 1000000),
                         concept: 'SEGURO COLECTIVO DE ACCIDENTES',
@@ -79,7 +82,15 @@ const Step1Import = () => {
             setProgress(100);
 
             // Guardar datos en estado global
-            dispatch({ type: ACTIONS.UPDATE_POLICY_DATA, payload: extractedData });
+            dispatch({
+                type: ACTIONS.UPDATE_POLICY_DATA,
+                payload: {
+                    clientData: extractedData.client,
+                    policyData: extractedData.policyData,
+                    receipts: extractedData.receipts,
+                    commissionPercentage: extractedData.commissionPercentage
+                }
+            });
             dispatch({ type: ACTIONS.UPDATE_POLICY_FILE, payload: { name: file.name, size: `${(file.size / 1024).toFixed(1)}KB`, status: 'success' } });
             dispatch({ type: ACTIONS.ADD_LOG, payload: `Documento "${file.name}" capturado y procesado con IA.` });
 
@@ -161,7 +172,7 @@ const Step1Import = () => {
                         <>
                             <div className="icon-group">
                                 <div className="icon-circle blue"><FileImage size={32} /></div>
-                                <div className="icon-circle purple"><Focus size={32} /></div>
+                                <div className="icon-circle orange"><Focus size={32} /></div>
                             </div>
                             <h3 className="dz-title">Arrastra tu archivo aquí</h3>
                             <p className="dz-subtitle">o selecciona una opción debajo</p>
@@ -170,7 +181,7 @@ const Step1Import = () => {
                                 <button className="btn btn-primary" onClick={(e) => { e.stopPropagation(); triggerFileInput(); }}>
                                     <UploadCloud size={18} /> Subir PDF o Imagen
                                 </button>
-                                <button className="btn btn-purple" onClick={(e) => { e.stopPropagation(); setIsCameraOpen(true); }}>
+                                <button className="btn btn-orange" onClick={(e) => { e.stopPropagation(); setIsCameraOpen(true); }} style={{ background: '#f59e0b', color: 'white' }}>
                                     <Camera size={18} /> Tomar Foto
                                 </button>
                             </div>
@@ -224,7 +235,7 @@ const Step1Import = () => {
                     <span>Formatos PDF</span>
                 </div>
                 <div className="f-card">
-                    <TabletSmartphone size={24} className="f-icon" color="#a855f7" />
+                    <TabletSmartphone size={24} className="f-icon" color="#f59e0b" />
                     <span>Mobile Ready</span>
                 </div>
                 <div className="f-card success">

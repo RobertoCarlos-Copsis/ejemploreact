@@ -121,7 +121,25 @@ const Step3Completion = () => {
               value={commissionPercentage}
               onChange={handleCommissionChange}
             />
-            <span className="slider-value">{commissionPercentage}%</span>
+            <input
+              type="number"
+              min="0"
+              max="100"
+              className="commission-number-input"
+              value={commissionPercentage}
+              onChange={handleCommissionChange}
+              style={{
+                width: '60px',
+                padding: '4px 8px',
+                borderRadius: '8px',
+                border: '1px solid #e2e8f0',
+                fontSize: '0.9rem',
+                fontWeight: '600',
+                marginLeft: '10px',
+                textAlign: 'center'
+              }}
+            />
+            <span className="slider-value">%</span>
           </div>
           <p className="helper-text">Porcentaje de comisión que recibes por esta póliza</p>
         </div>

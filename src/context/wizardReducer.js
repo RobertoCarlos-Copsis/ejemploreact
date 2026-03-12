@@ -13,7 +13,7 @@ export const initialState = {
     phone: '',
   },
   receipts: [], // { id, amount, periodValue, periodName, status, logs }
-  commissionPercentage: 10,
+  commissionPercentage: 15,
   notifications: {
     cobranza: [15, 7, 3],
     renovacion: [60, 30, 15],
@@ -55,11 +55,12 @@ export function wizardReducer(state, action) {
     case ACTIONS.UPDATE_POLICY_FILE:
       return { ...state, policy: { ...state.policy, ...action.payload } };
     case ACTIONS.UPDATE_POLICY_DATA:
-      return { 
-        ...state, 
+      return {
+        ...state,
         policy: { ...state.policy, data: action.payload.policyData },
         client: { ...state.client, ...action.payload.clientData },
-        receipts: action.payload.receipts
+        receipts: action.payload.receipts,
+        commissionPercentage: action.payload.commissionPercentage ?? state.commissionPercentage
       };
     case ACTIONS.UPDATE_CLIENT:
       return { ...state, client: { ...state.client, ...action.payload } };
